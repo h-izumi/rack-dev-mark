@@ -18,8 +18,6 @@ module Rack
 
         status, headers, response = @app.call(env)
 
-        headers = HeaderHash.new(headers)
-
         headers['X-Rack-Dev-Mark-Env'] = CGI.escape Rack::DevMark.env
 
         redirect = 300 <= status.to_i && status.to_i < 400
